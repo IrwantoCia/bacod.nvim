@@ -19,7 +19,7 @@ end
 --[[ one thing need to be fixed
 -- visual mode need to be escaped first before running the command
 ]] --
-M.get_lines = function()
+M._get_lines = function()
     local line1 = vim.api.nvim_buf_get_mark(0, "<")[1]
     local line2 = vim.api.nvim_buf_get_mark(0, ">")[1]
     local lines = vim.api.nvim_buf_get_lines(0, line1 - 1, line2 + 1, false)
@@ -32,7 +32,7 @@ M.get_lines = function()
 end
 
 M.call_gpt = function()
-    local lines = M.get_lines()
+    local lines = M._get_lines()
     if #lines == 0 then
         print("No lines selected")
         return
